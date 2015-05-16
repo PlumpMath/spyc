@@ -25,6 +25,7 @@ class Directory(File):
     def apply(self):
         if path.exists(self['path']) and not path.isdir(self['path']):
             os.remove(self['path'])
+        if not path.exists(self['path']):
             os.mkdir(self['path'])
         if self['mode'] is not None:
             os.chmod(self['path'], self['mode'])
@@ -39,9 +40,3 @@ class RegularFile(File):
             f.write(self['source'])
         if self['mode'] is not None:
             os.chmod(self['path'], self['mode'])
-
-
-RegularFile('/tmp/test-file',
-     source='Hello, world!',
-     mode=0400,
-     ).apply()
