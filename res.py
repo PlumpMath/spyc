@@ -21,6 +21,8 @@ class Resource(object):
         self.needs_init = True
         self.name = name
         self.options = {}
+        if hasattr(self, 'name_attr'):
+            self.options[self.name_attr] = self.name
         self.ensure(*args, **kwargs)
 
     def ensure(self, *args, **kwargs):
@@ -29,6 +31,12 @@ class Resource(object):
                 self.options[key] = kwargs[key]
             elif self.options[key] != kwargs[key]:
                 raise Conflict(self, key, self.options[key], kwargs[key])
+
+    def __getitem__(self, key):
+        if key in self.options:
+            return self.options[key]
+        else:
+            return getattr(self, key)
 
     def __new__(cls, name, *args, **kwargs):
         if (cls, name) in instances:
