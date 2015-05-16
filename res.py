@@ -35,7 +35,7 @@ class Resource(object):
             return instances[(cls, name)]
         else:
             obj = object.__new__(cls, name, *args, **kwargs)
-            Resource.add_instace(cls, name, obj)
+            Resource.add_instance(cls, name, obj)
             instances[(cls, name)] = obj
             return obj
 
@@ -48,19 +48,4 @@ class Resource(object):
 
 
 class File(Resource):
-
-    def __init__(self, *args, **kwargs):
-        Resource.__init__(self, *args, **kwargs)
-        if not self.needs_init:
-            return
-        print('init: ' + self.name)
-
-    def ensure(self, *args, **kwargs):
-        Resource.ensure(self, *args, **kwargs)
-        print('ensure %s(*%r, **%r)' %
-              (self.name, args, kwargs))
-
-
-File('foo')
-File('foo')
-File('bar')
+    pass
