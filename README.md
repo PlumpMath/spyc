@@ -10,7 +10,7 @@ you don't have to set up a server to set up your server (Yo Dawg).
 From Puppet: Declare resources and their dependencies, let the tool work 
 out the ordering. Ansible and Chef both just execute things in the order 
 listed in the file --- you have an imperative script whose statements
-happen to be idempotent
+happen to be idempotent.
 
 From Chef: Use a real programming language, instead of a special-purpose 
 DSL. Ansible uses a specialized yaml format, and puppet has it's own
