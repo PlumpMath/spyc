@@ -44,6 +44,8 @@ def _find_cycle(graph, path, path_set, visited):
     for vertex in graph:
         if vertex in path_set:
             raise _FoundCycle(path)
+        if vertex in visited:
+            continue
         path.append(vertex)
         path_set.add(vertex)
         visited.add(vertex)
