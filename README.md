@@ -20,4 +20,4 @@ Spyc, the language is python 2.
 
 # License
 
-LGPLv3 (see `COPYING`).
+LGPL-2.1 (see `COPYING`).
