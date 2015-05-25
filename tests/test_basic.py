@@ -1,7 +1,7 @@
 import sys
 sys.path.insert(0, '.')
 
-import res
+from spyc import res
 
 for _ in range(2):
     res.File('/tmp/hello-world')

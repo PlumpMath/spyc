@@ -5,8 +5,8 @@ sys.path.insert(0, '.')
 import tempfile
 import os
 
-from file_res import File, RegularFile, AbsentFile, Directory
-import res
+from spyc.file_res import File, RegularFile, AbsentFile, Directory
+from spyc import res
 
 tmpdir = tempfile.mkdtemp()
 
