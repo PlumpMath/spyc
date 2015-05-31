@@ -6,6 +6,21 @@ class Vertex(object):
         self.data = data
 
 
+def topological_sort(graph, _visited=None):
+    """Return an iterater traversing ``graph`` in a topological order.
+
+    ``graph`` should be a set of verticies, which must not be part of a cyclic
+    graph.
+    """
+    if _visited is None:
+        _visited = set()
+    for v in graph:
+        if v not in _visited:
+            _visited.add(v)
+            topological_sort(v.edges, _visited)
+            yield v
+
+
 def find_cycle(graph):
     """Attempt to find a cycle in ``graph``.
 
