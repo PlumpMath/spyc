@@ -1,5 +1,6 @@
 from abc import ABCMeta, abstractmethod
 from spyc.errors import MergeConflict
+from collections import defaultdict
 
 
 class Spec(object):
@@ -7,7 +8,7 @@ class Spec(object):
     __metaclass__ = ABCMeta
 
     def __init__(self):
-        self.__constraints = {}
+        self.__constraints = defaultdict(lambda: None)
 
     def __setitem__(self, key, value):
         self.__constraints[key] = value
