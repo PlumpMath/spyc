@@ -1,4 +1,4 @@
-from spyc.graph import Vertex
+from spyc.graph import Vertex, find_cycle, topological_sort
 
 
 class Scheduler(object):
@@ -21,3 +21,11 @@ class Scheduler(object):
         first.schedule(self)
         next.schedule(self)
         self.specs[first.key()].edges.add(self.specs[next.key()])
+
+    def apply(self):
+        verticies = set(self.specs.values())
+        cycle = find_cycle(verticies)
+        if cycle is not None:
+            assert False  # TODO proper checking
+        for v in topological_sort(verticies):
+            v.data.apply()
