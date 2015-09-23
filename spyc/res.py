@@ -53,7 +53,3 @@ class Resource(object):
         for superclass in cls.__bases__:
             if Resource.__subclasscheck__(superclass):
                 Resource.add_instance(superclass, name, obj)
-
-
-class File(Resource):
-    pass
