@@ -52,6 +52,7 @@ def _find_cycle(graph, path, path_set, visited):
     * ``path_set`` is a set containing the same elements as ``path``; this
       is used for faster membership checking, while ``path`` is thrown as
       the "found" cycle.
+    * ``visted`` is the set of all nodes that have been visited.
     """
     # Depth first search tracking visited verticies and our current path.
     # If we find a node we've visited *in this path*, throw the path back
