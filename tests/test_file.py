@@ -1,14 +1,13 @@
 import tempfile
 import os
 
-from spyc.file import File, RegularFile, AbsentFile, Directory
+from spyc.file import RegularFile, AbsentFile, Directory
 
 tmpdir = tempfile.mkdtemp()
 filename = os.path.join(tmpdir, 'test-hello')
 
-f_spec = RegularFile(filename)
-f_spec['source'] = 'hello'
-f_spec.apply()
+RegularFile(filename,
+            source='hello').apply()
 with open(filename) as f:
     assert f.read() == 'hello'
 
