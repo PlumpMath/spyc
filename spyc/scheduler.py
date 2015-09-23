@@ -1,6 +1,10 @@
 from spyc.graph import Vertex, find_cycle, topological_sort
 
 
+class CircularDependency(Exception):
+    pass
+
+
 class Scheduler(object):
 
     def __init__(self):
@@ -26,6 +30,6 @@ class Scheduler(object):
         verticies = set(self.specs.values())
         cycle = find_cycle(verticies)
         if cycle is not None:
-            assert False  # TODO proper checking
+            raise CircularDependency(cycle)
         for v in topological_sort(verticies):
             v.data.apply()
